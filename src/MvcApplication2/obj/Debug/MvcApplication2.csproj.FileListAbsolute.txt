@@ -1,0 +1,7 @@
+D:\programowanie\MvcApplication2\MvcApplication2\bin\MvcApplication2.dll
+D:\programowanie\MvcApplication2\MvcApplication2\bin\MvcApplication2.pdb
+D:\programowanie\MvcApplication2\MvcApplication2\bin\EntityFramework.dll
+D:\programowanie\MvcApplication2\MvcApplication2\bin\EntityFramework.xml
+D:\programowanie\MvcApplication2\MvcApplication2\obj\Debug\ResolveAssemblyReference.cache
+D:\programowanie\MvcApplication2\MvcApplication2\obj\Debug\MvcApplication2.dll
+D:\programowanie\MvcApplication2\MvcApplication2\obj\Debug\MvcApplication2.pdb
