@@ -1,10 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities">
+  <EntityContainerMapping StorageEntityContainer="dbadce929125d548b3b43fa0a900f524c4ModelStoreContainer" CdmEntityContainer="dbadce929125d548b3b43fa0a900f524c4Entities">
+    <EntitySetMapping Name="Cities">
+      <EntityTypeMapping TypeName="dbadce929125d548b3b43fa0a900f524c4Model.City">
+        <MappingFragment StoreEntitySet="Cities">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="City_name" ColumnName="City_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Users">
-      <EntityTypeMapping TypeName="Model.User">
+      <EntityTypeMapping TypeName="dbadce929125d548b3b43fa0a900f524c4Model.User">
         <MappingFragment StoreEntitySet="Users">
-          <ScalarProperty Name="Zip_code" ColumnName="Zip_code" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Surname" ColumnName="Surname" />
@@ -15,14 +22,7 @@
           <ScalarProperty Name="House_number" ColumnName="House_number" />
           <ScalarProperty Name="Apartment_number" ColumnName="Apartment_number" />
           <ScalarProperty Name="username" ColumnName="username" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Cities">
-      <EntityTypeMapping TypeName="Model.City">
-        <MappingFragment StoreEntitySet="Cities">
-          <ScalarProperty Name="City_name" ColumnName="City_name" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Zip_code" ColumnName="Zip_code" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

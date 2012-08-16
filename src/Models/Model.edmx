@@ -4,23 +4,23 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
-        <EntityContainer Name="ModelStoreContainer">
-          <EntitySet Name="Cities" EntityType="Model.Store.Cities" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Users" EntityType="Model.Store.Users" store:Type="Tables" Schema="dbo" />
+    <Schema Namespace="dbadce929125d548b3b43fa0a900f524c4Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="dbadce929125d548b3b43fa0a900f524c4ModelStoreContainer">
+          <EntitySet Name="Cities" EntityType="dbadce929125d548b3b43fa0a900f524c4Model.Store.Cities" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Users" EntityType="dbadce929125d548b3b43fa0a900f524c4Model.Store.Users" store:Type="Tables" Schema="dbo" />
         </EntityContainer>
         <EntityType Name="Cities">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="City_name" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="25" />
           <Property Name="Surname" Type="nvarchar" MaxLength="25" />
           <Property Name="Email" Type="nvarchar" MaxLength="50" />
@@ -35,43 +35,46 @@
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="Model" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
-        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Users" EntityType="Model.User" />
-          <EntitySet Name="Cities" EntityType="Model.City" />
+      <Schema Namespace="dbadce929125d548b3b43fa0a900f524c4Model" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="dbadce929125d548b3b43fa0a900f524c4Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Cities" EntityType="dbadce929125d548b3b43fa0a900f524c4Model.City" />
+          <EntitySet Name="Users" EntityType="dbadce929125d548b3b43fa0a900f524c4Model.User" />
         </EntityContainer>
-        <EntityType Name="User">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="25" Unicode="true" FixedLength="true" />
-          <Property Name="Surname" Type="String" MaxLength="25" Unicode="true" FixedLength="true" />
-          <Property Name="Email" Type="String" MaxLength="50" Unicode="true" FixedLength="true" />
-          <Property Name="Project" Type="String" MaxLength="30" Unicode="true" FixedLength="true" />
-          <Property Name="City" Type="String" MaxLength="50" Unicode="true" FixedLength="true" />
-          <Property Name="Street" Type="String" MaxLength="50" Unicode="true" FixedLength="true" />
-          <Property Name="House_number" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
-          <Property Name="Apartment_number" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
-          <Property Name="username" Type="String" MaxLength="50" Unicode="true" FixedLength="true" />
-          <Property Type="String" Name="Zip_code" MaxLength="6" FixedLength="true" Unicode="true" />
-        </EntityType>
         <EntityType Name="City">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="City_name" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="City_name" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="25" Unicode="true" FixedLength="false" />
+          <Property Name="Surname" Type="String" MaxLength="25" Unicode="true" FixedLength="false" />
+          <Property Name="Email" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Project" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="City" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Street" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="House_number" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="Apartment_number" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="username" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Zip_code" Type="String" MaxLength="6" Unicode="true" FixedLength="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities">
-          <EntitySetMapping Name="Users"><EntityTypeMapping TypeName="Model.User"><MappingFragment StoreEntitySet="Users">
-            <ScalarProperty Name="Zip_code" ColumnName="Zip_code" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
+        <EntityContainerMapping StorageEntityContainer="dbadce929125d548b3b43fa0a900f524c4ModelStoreContainer" CdmEntityContainer="dbadce929125d548b3b43fa0a900f524c4Entities">
+          <EntitySetMapping Name="Cities"><EntityTypeMapping TypeName="dbadce929125d548b3b43fa0a900f524c4Model.City"><MappingFragment StoreEntitySet="Cities">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="City_name" ColumnName="City_name" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Users"><EntityTypeMapping TypeName="dbadce929125d548b3b43fa0a900f524c4Model.User"><MappingFragment StoreEntitySet="Users">
+            <ScalarProperty Name="Id" ColumnName="Id" />
             <ScalarProperty Name="Name" ColumnName="Name" />
             <ScalarProperty Name="Surname" ColumnName="Surname" />
             <ScalarProperty Name="Email" ColumnName="Email" />
@@ -81,15 +84,8 @@
             <ScalarProperty Name="House_number" ColumnName="House_number" />
             <ScalarProperty Name="Apartment_number" ColumnName="Apartment_number" />
             <ScalarProperty Name="username" ColumnName="username" />
+            <ScalarProperty Name="Zip_code" ColumnName="Zip_code" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="Cities">
-            <EntityTypeMapping TypeName="Model.City">
-              <MappingFragment StoreEntitySet="Cities">
-                <ScalarProperty Name="City_name" ColumnName="City_name" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -112,8 +108,8 @@
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
       <Diagram Name="Model">
-        <EntityTypeShape EntityType="Model.User" Width="1.5" PointX="1.375" PointY="0.5" Height="2.7779426666100817" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.City" Width="1.5" PointX="3.375" PointY="0.75" Height="1.2761848809321723" />
+        <EntityTypeShape EntityType="dbadce929125d548b3b43fa0a900f524c4Model.City" Width="1.5" PointX="0.75" PointY="0.75" Height="1.2761848809321723" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbadce929125d548b3b43fa0a900f524c4Model.User" Width="1.5" PointX="2.75" PointY="0.75" Height="2.7779426666100813" IsExpanded="true" />
       </Diagram>
     </Diagrams>
   </Designer>

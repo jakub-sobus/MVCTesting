@@ -13,10 +13,10 @@ namespace Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Entities : DbContext
+    public partial class dbadce929125d548b3b43fa0a900f524c4Entities : DbContext
     {
-        public Entities()
-            : base("name=Entities")
+        public dbadce929125d548b3b43fa0a900f524c4Entities()
+            : base("name=dbadce929125d548b3b43fa0a900f524c4Entities")
         {
         }
     
@@ -25,7 +25,7 @@ namespace Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public DbSet<User> Users { get; set; }
         public DbSet<City> Cities { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }

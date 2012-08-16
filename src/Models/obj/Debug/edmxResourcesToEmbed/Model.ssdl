@@ -1,21 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
-  <EntityContainer Name="ModelStoreContainer">
-    <EntitySet Name="Cities" EntityType="Model.Store.Cities" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Users" EntityType="Model.Store.Users" store:Type="Tables" Schema="dbo" />
+<Schema Namespace="dbadce929125d548b3b43fa0a900f524c4Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="dbadce929125d548b3b43fa0a900f524c4ModelStoreContainer">
+    <EntitySet Name="Cities" EntityType="dbadce929125d548b3b43fa0a900f524c4Model.Store.Cities" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Users" EntityType="dbadce929125d548b3b43fa0a900f524c4Model.Store.Users" store:Type="Tables" Schema="dbo" />
   </EntityContainer>
   <EntityType Name="Cities">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Id" Type="int" Nullable="false" />
     <Property Name="City_name" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="Users">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Id" Type="int" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="25" />
     <Property Name="Surname" Type="nvarchar" MaxLength="25" />
     <Property Name="Email" Type="nvarchar" MaxLength="50" />

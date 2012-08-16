@@ -8,7 +8,7 @@ namespace Common.Repository
 {
     public class CommonRepository
     {
-        Entities context = new Entities();
+        dbadce929125d548b3b43fa0a900f524c4Entities context = new dbadce929125d548b3b43fa0a900f524c4Entities();
 
         public List<string> GetCities()
         {
