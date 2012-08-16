@@ -1,0 +1,7 @@
+D:\construction journal online\construction journal\construction journal\bin\construction journal.dll
+D:\construction journal online\construction journal\construction journal\bin\construction journal.pdb
+D:\construction journal online\construction journal\construction journal\bin\EntityFramework.dll
+D:\construction journal online\construction journal\construction journal\bin\EntityFramework.xml
+D:\construction journal online\construction journal\construction journal\obj\Debug\ResolveAssemblyReference.cache
+D:\construction journal online\construction journal\construction journal\obj\Debug\construction journal.dll
+D:\construction journal online\construction journal\construction journal\obj\Debug\construction journal.pdb

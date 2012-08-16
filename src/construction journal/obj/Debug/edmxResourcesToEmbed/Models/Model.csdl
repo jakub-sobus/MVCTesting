@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Users" EntityType="Model.User" />
+  </EntityContainer>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="25" Unicode="true" FixedLength="true" />
+    <Property Name="Surname" Type="String" MaxLength="25" Unicode="true" FixedLength="true" />
+    <Property Name="Email" Type="String" MaxLength="50" Unicode="true" FixedLength="true" />
+    <Property Name="Project" Type="String" MaxLength="30" Unicode="true" FixedLength="true" />
+    <Property Name="City" Type="String" MaxLength="50" Unicode="true" FixedLength="true" />
+    <Property Name="Street" Type="String" MaxLength="50" Unicode="true" FixedLength="true" />
+    <Property Name="House_number" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+    <Property Name="Apartment_number" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+    <Property Name="username" Type="String" MaxLength="50" Unicode="true" FixedLength="true" />
+  </EntityType>
+</Schema>

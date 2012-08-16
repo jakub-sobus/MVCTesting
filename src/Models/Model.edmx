@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="Cities" EntityType="Model.Store.Cities" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Users" EntityType="Model.Store.Users" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="Cities">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="City_name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" MaxLength="25" />
+          <Property Name="Surname" Type="nvarchar" MaxLength="25" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Project" Type="nvarchar" MaxLength="30" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" />
+          <Property Name="Street" Type="nvarchar" MaxLength="50" />
+          <Property Name="House_number" Type="nvarchar" MaxLength="10" />
+          <Property Name="Apartment_number" Type="nvarchar" MaxLength="10" />
+          <Property Name="username" Type="nvarchar" MaxLength="50" />
+          <Property Name="Zip_code" Type="nvarchar" MaxLength="6" />
+        </EntityType>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Users" EntityType="Model.User" />
+          <EntitySet Name="Cities" EntityType="Model.City" />
+        </EntityContainer>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="25" Unicode="true" FixedLength="true" />
+          <Property Name="Surname" Type="String" MaxLength="25" Unicode="true" FixedLength="true" />
+          <Property Name="Email" Type="String" MaxLength="50" Unicode="true" FixedLength="true" />
+          <Property Name="Project" Type="String" MaxLength="30" Unicode="true" FixedLength="true" />
+          <Property Name="City" Type="String" MaxLength="50" Unicode="true" FixedLength="true" />
+          <Property Name="Street" Type="String" MaxLength="50" Unicode="true" FixedLength="true" />
+          <Property Name="House_number" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="Apartment_number" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="username" Type="String" MaxLength="50" Unicode="true" FixedLength="true" />
+          <Property Type="String" Name="Zip_code" MaxLength="6" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="City_name" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="Users"><EntityTypeMapping TypeName="Model.User"><MappingFragment StoreEntitySet="Users">
+            <ScalarProperty Name="Zip_code" ColumnName="Zip_code" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+            <ScalarProperty Name="Surname" ColumnName="Surname" />
+            <ScalarProperty Name="Email" ColumnName="Email" />
+            <ScalarProperty Name="Project" ColumnName="Project" />
+            <ScalarProperty Name="City" ColumnName="City" />
+            <ScalarProperty Name="Street" ColumnName="Street" />
+            <ScalarProperty Name="House_number" ColumnName="House_number" />
+            <ScalarProperty Name="Apartment_number" ColumnName="Apartment_number" />
+            <ScalarProperty Name="username" ColumnName="username" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Cities">
+            <EntityTypeMapping TypeName="Model.City">
+              <MappingFragment StoreEntitySet="Cities">
+                <ScalarProperty Name="City_name" ColumnName="City_name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Model">
+        <EntityTypeShape EntityType="Model.User" Width="1.5" PointX="1.375" PointY="0.5" Height="2.7779426666100817" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.City" Width="1.5" PointX="3.375" PointY="0.75" Height="1.2761848809321723" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

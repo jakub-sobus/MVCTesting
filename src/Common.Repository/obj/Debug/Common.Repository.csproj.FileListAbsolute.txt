@@ -1,0 +1,7 @@
+D:\construction journal online\construction journal\Common.Repository\bin\Debug\Common.Repository.dll
+D:\construction journal online\construction journal\Common.Repository\bin\Debug\Common.Repository.pdb
+D:\construction journal online\construction journal\Common.Repository\bin\Debug\Models.dll
+D:\construction journal online\construction journal\Common.Repository\bin\Debug\Models.pdb
+D:\construction journal online\construction journal\Common.Repository\obj\Debug\ResolveAssemblyReference.cache
+D:\construction journal online\construction journal\Common.Repository\obj\Debug\Common.Repository.dll
+D:\construction journal online\construction journal\Common.Repository\obj\Debug\Common.Repository.pdb
