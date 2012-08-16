@@ -9,3 +9,5 @@ D:\construction journal online\construction journal\construction journal\obj\Deb
 D:\construction journal online\construction journal\construction journal\obj\Debug\construction journal.pdb
 D:\construction journal online\construction journal\construction journal\bin\Common.Repository.dll
 D:\construction journal online\construction journal\construction journal\bin\Common.Repository.pdb
+D:\construction journal online\construction journal\construction journal\bin\EntityFramework.dll
+D:\construction journal online\construction journal\construction journal\bin\EntityFramework.xml

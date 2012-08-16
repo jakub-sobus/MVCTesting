@@ -4,3 +4,5 @@ D:\construction journal online\construction journal\Models\bin\Debug\Models.pdb
 D:\construction journal online\construction journal\Models\obj\Debug\ResolveAssemblyReference.cache
 D:\construction journal online\construction journal\Models\obj\Debug\Models.dll
 D:\construction journal online\construction journal\Models\obj\Debug\Models.pdb
+D:\construction journal online\construction journal\Models\bin\Debug\EntityFramework.dll
+D:\construction journal online\construction journal\Models\bin\Debug\EntityFramework.xml
