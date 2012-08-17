@@ -31,6 +31,13 @@ namespace ConstructionJournal.Controllers
             return View(oldInfo);
         }
 
+        [HttpPost]
+        public ActionResult UpdateUserInfo(User user)
+        {
+            userRepository.UpdateUserInfo(user);
+            return RedirectToAction("Index", "Home");
+        }
+
         public ActionResult About()
         {
             return View();
