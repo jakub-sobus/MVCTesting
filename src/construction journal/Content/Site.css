@@ -112,11 +112,11 @@ footer,
 #footer {
     background-color: #fff;
     color: #999;
-    padding: 10px 0;
+    padding: 0.2% 0;
     text-align: center;
     line-height: normal;
     margin: 0 0 30px 0;
-    font-size: .9em;
+    font-size: .6em;
     border-radius: 8px 8px 8px 8px;
     -webkit-border-radius: 8px 8px 8px 8px;
     -moz-border-radius: 8px 8px 8px 8px;

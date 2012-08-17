@@ -52,14 +52,14 @@
             <h2><a href="#"></a>Dane osobowe</h2>
             <div>
                 <div class="editor-label">
-                    @Html.LabelFor(model => model.Name)
+                    @Html.LabelFor(model => model.Name, "Imię")
                 </div>
                 <div class="editor-field">
                     @Html.EditorFor(model => model.Name)
                     @Html.ValidationMessageFor(model => model.Name)
                 </div>
                 <div class="editor-label">
-                    @Html.LabelFor(model => model.Surname)
+                    @Html.LabelFor(model => model.Surname, "Nazwisko")
                 </div>
                 <div class="editor-field">
                     @Html.EditorFor(model => model.Surname)
@@ -73,7 +73,7 @@
                     @Html.ValidationMessageFor(model => model.Email)
                 </div>
                 <div class="editor-label">
-                    @Html.LabelFor(model => model.Project)
+                    @Html.LabelFor(model => model.Project, "Nazwa projektu")
                 </div>
                 <div class="editor-field">
                     @Html.EditorFor(model => model.Project)
@@ -83,35 +83,35 @@
             <h2><a href="#"></a>Adres zamieszkania</h2>
             <div>
                 <div class="editor-label">
-                    @Html.LabelFor(model => model.Street)
+                    @Html.LabelFor(model => model.Street, "Ulica")
                 </div>
                 <div class="editor-field">
                     @Html.EditorFor(model => model.Street)
                     @Html.ValidationMessageFor(model => model.Street)
                 </div>
                 <div class="editor-label">
-                    @Html.LabelFor(model => model.House_number)
+                    @Html.LabelFor(model => model.House_number, "Numer domu")
                 </div>
                 <div class="editor-field">
                     @Html.EditorFor(model => model.House_number)
                     @Html.ValidationMessageFor(model => model.House_number)
                 </div>
                 <div class="editor-label">
-                    @Html.LabelFor(model => model.Apartment_number)
+                    @Html.LabelFor(model => model.Apartment_number, "Numer mieszkania")
                 </div>
                 <div class="editor-field">
                     @Html.EditorFor(model => model.Apartment_number)
                     @Html.ValidationMessageFor(model => model.Apartment_number)
                 </div>
                 <div class="editor-label">
-                    @Html.LabelFor(model => model.City)
+                    @Html.LabelFor(model => model.City, "Miasto")
                 </div>
                 <div class="editor-field">
                     @Html.EditorFor(model => model.City)
                     @Html.ValidationMessageFor(model => model.City)
                 </div>
                 <div class="editor-label">
-                    @Html.LabelFor(model => model.Zip_code)
+                    @Html.LabelFor(model => model.Zip_code, "Kod pocztowy")
                 </div>
                 <div class="editor-field">
                     @Html.EditorFor(model => model.Zip_code)
@@ -125,5 +125,5 @@
 
 }
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Powrót do strony głównej", "Index")
 </div>
