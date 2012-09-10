@@ -4,10 +4,15 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="dbadce929125d548b3b43fa0a900f524c4Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
-        <EntityContainer Name="dbadce929125d548b3b43fa0a900f524c4ModelStoreContainer">
-          <EntitySet Name="Cities" EntityType="dbadce929125d548b3b43fa0a900f524c4Model.Store.Cities" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Users" EntityType="dbadce929125d548b3b43fa0a900f524c4Model.Store.Users" store:Type="Tables" Schema="dbo" />
+    <Schema Namespace="DBEntities.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="DBEntitiesStoreContainer">
+          <EntitySet Name="Cities" EntityType="DBEntities.Store.Cities" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Post" EntityType="DBEntities.Store.Post" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Users" EntityType="DBEntities.Store.Users" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Post_Users" Association="DBEntities.Store.FK_Post_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Post" EntitySet="Post" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Cities">
           <Key>
@@ -15,6 +20,15 @@
           </Key>
           <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="City_name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Post">
+          <Key>
+            <PropertyRef Name="PostId" />
+          </Key>
+          <Property Name="PostId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Text" Type="text" />
+          <Property Name="CreationDate" Type="datetime" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -32,13 +46,30 @@
           <Property Name="username" Type="nvarchar" MaxLength="50" />
           <Property Name="Zip_code" Type="nvarchar" MaxLength="6" />
         </EntityType>
+        <Association Name="FK_Post_Users">
+          <End Role="Users" Type="DBEntities.Store.Users" Multiplicity="1" />
+          <End Role="Post" Type="DBEntities.Store.Post" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Post">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="dbadce929125d548b3b43fa0a900f524c4Model" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
-        <EntityContainer Name="dbadce929125d548b3b43fa0a900f524c4Entities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Cities" EntityType="dbadce929125d548b3b43fa0a900f524c4Model.City" />
-          <EntitySet Name="Users" EntityType="dbadce929125d548b3b43fa0a900f524c4Model.User" />
+      <Schema Namespace="DBEntities" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="DataBaseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Cities" EntityType="DBEntities.City" />
+          <EntitySet Name="Users" EntityType="DBEntities.User" />
+          <EntitySet Name="Posts" EntityType="DBEntities.Post" />
+          <AssociationSet Name="FK_Post_Users" Association="DBEntities.FK_Post_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Post" EntitySet="Posts" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="City">
           <Key>
@@ -51,7 +82,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="25" Unicode="true" FixedLength="false" />
           <Property Name="Surname" Type="String" MaxLength="25" Unicode="true" FixedLength="false" />
           <Property Name="Email" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
@@ -62,18 +93,41 @@
           <Property Name="Apartment_number" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
           <Property Name="username" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="Zip_code" Type="String" MaxLength="6" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Posts" Relationship="DBEntities.FK_Post_Users" FromRole="User" ToRole="Post" />
         </EntityType>
+        <EntityType Name="Post">
+          <Key>
+            <PropertyRef Name="PostId" />
+          </Key>
+          <Property Type="Int32" Name="PostId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Text" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="CreationDate" Nullable="false" />
+          <Property Type="Int32" Name="UserId" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="DBEntities.FK_Post_Users" FromRole="Post" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_Post_Users">
+          <End Type="DBEntities.User" Role="User" Multiplicity="1" />
+          <End Type="DBEntities.Post" Role="Post" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Post">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="dbadce929125d548b3b43fa0a900f524c4ModelStoreContainer" CdmEntityContainer="dbadce929125d548b3b43fa0a900f524c4Entities">
-          <EntitySetMapping Name="Cities"><EntityTypeMapping TypeName="dbadce929125d548b3b43fa0a900f524c4Model.City"><MappingFragment StoreEntitySet="Cities">
+        <EntityContainerMapping StorageEntityContainer="DBEntitiesStoreContainer" CdmEntityContainer="DataBaseEntities">
+          <EntitySetMapping Name="Cities"><EntityTypeMapping TypeName="DBEntities.City"><MappingFragment StoreEntitySet="Cities">
             <ScalarProperty Name="Id" ColumnName="Id" />
             <ScalarProperty Name="City_name" ColumnName="City_name" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="Users"><EntityTypeMapping TypeName="dbadce929125d548b3b43fa0a900f524c4Model.User"><MappingFragment StoreEntitySet="Users">
+          <EntitySetMapping Name="Users"><EntityTypeMapping TypeName="DBEntities.User"><MappingFragment StoreEntitySet="Users">
             <ScalarProperty Name="Id" ColumnName="Id" />
             <ScalarProperty Name="Name" ColumnName="Name" />
             <ScalarProperty Name="Surname" ColumnName="Surname" />
@@ -86,6 +140,16 @@
             <ScalarProperty Name="username" ColumnName="username" />
             <ScalarProperty Name="Zip_code" ColumnName="Zip_code" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Posts">
+            <EntityTypeMapping TypeName="DBEntities.Post">
+              <MappingFragment StoreEntitySet="Post">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="PostId" ColumnName="PostId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -108,8 +172,13 @@
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
       <Diagram Name="Model">
-        <EntityTypeShape EntityType="dbadce929125d548b3b43fa0a900f524c4Model.City" Width="1.5" PointX="0.75" PointY="0.75" Height="1.2761848809321723" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbadce929125d548b3b43fa0a900f524c4Model.User" Width="1.5" PointX="2.75" PointY="0.75" Height="2.7779426666100813" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBEntities.City" Width="1.5" PointX="0.75" PointY="0.75" Height="1.2761848809321723" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBEntities.User" Width="1.5" PointX="2.75" PointY="0.75" Height="2.7779426666100813" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBEntities.Post" Width="1.5" PointX="5" PointY="1.375" Height="1.7767708094914756" />
+        <AssociationConnector Association="DBEntities.FK_Post_Users" >
+          <ConnectorPoint PointX="4.25" PointY="2.2633854047457378" />
+          <ConnectorPoint PointX="5" PointY="2.2633854047457378" />
+        </AssociationConnector>
       </Diagram>
     </Diagrams>
   </Designer>

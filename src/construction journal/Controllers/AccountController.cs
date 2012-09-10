@@ -41,7 +41,7 @@ namespace ConstructionJournal.Controllers
                     }
                     else
                     {
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToAction("Index", "Blog");
                     }
                 }
                 else

@@ -1,8 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="dbadce929125d548b3b43fa0a900f524c4Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
-  <EntityContainer Name="dbadce929125d548b3b43fa0a900f524c4ModelStoreContainer">
-    <EntitySet Name="Cities" EntityType="dbadce929125d548b3b43fa0a900f524c4Model.Store.Cities" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Users" EntityType="dbadce929125d548b3b43fa0a900f524c4Model.Store.Users" store:Type="Tables" Schema="dbo" />
+<Schema Namespace="DBEntities.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="DBEntitiesStoreContainer">
+    <EntitySet Name="Cities" EntityType="DBEntities.Store.Cities" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Post" EntityType="DBEntities.Store.Post" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Users" EntityType="DBEntities.Store.Users" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_Post_Users" Association="DBEntities.Store.FK_Post_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Post" EntitySet="Post" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Cities">
     <Key>
@@ -10,6 +15,15 @@
     </Key>
     <Property Name="Id" Type="int" Nullable="false" />
     <Property Name="City_name" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Post">
+    <Key>
+      <PropertyRef Name="PostId" />
+    </Key>
+    <Property Name="PostId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Text" Type="text" />
+    <Property Name="CreationDate" Type="datetime" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Users">
     <Key>
@@ -27,4 +41,16 @@
     <Property Name="username" Type="nvarchar" MaxLength="50" />
     <Property Name="Zip_code" Type="nvarchar" MaxLength="6" />
   </EntityType>
+  <Association Name="FK_Post_Users">
+    <End Role="Users" Type="DBEntities.Store.Users" Multiplicity="1" />
+    <End Role="Post" Type="DBEntities.Store.Post" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Post">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

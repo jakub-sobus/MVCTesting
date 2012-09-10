@@ -13,10 +13,10 @@ namespace Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class dbadce929125d548b3b43fa0a900f524c4Entities : DbContext
+    public partial class DataBaseEntities : DbContext
     {
-        public dbadce929125d548b3b43fa0a900f524c4Entities()
-            : base("name=dbadce929125d548b3b43fa0a900f524c4Entities")
+        public DataBaseEntities()
+            : base("name=DataBaseEntities")
         {
         }
     
@@ -27,5 +27,6 @@ namespace Models
     
         public DbSet<City> Cities { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<Post> Posts { get; set; }
     }
 }

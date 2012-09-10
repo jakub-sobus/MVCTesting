@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="dbadce929125d548b3b43fa0a900f524c4ModelStoreContainer" CdmEntityContainer="dbadce929125d548b3b43fa0a900f524c4Entities">
+  <EntityContainerMapping StorageEntityContainer="DBEntitiesStoreContainer" CdmEntityContainer="DataBaseEntities">
     <EntitySetMapping Name="Cities">
-      <EntityTypeMapping TypeName="dbadce929125d548b3b43fa0a900f524c4Model.City">
+      <EntityTypeMapping TypeName="DBEntities.City">
         <MappingFragment StoreEntitySet="Cities">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="City_name" ColumnName="City_name" />
@@ -10,7 +10,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Users">
-      <EntityTypeMapping TypeName="dbadce929125d548b3b43fa0a900f524c4Model.User">
+      <EntityTypeMapping TypeName="DBEntities.User">
         <MappingFragment StoreEntitySet="Users">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
@@ -23,6 +23,16 @@
           <ScalarProperty Name="Apartment_number" ColumnName="Apartment_number" />
           <ScalarProperty Name="username" ColumnName="username" />
           <ScalarProperty Name="Zip_code" ColumnName="Zip_code" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Posts">
+      <EntityTypeMapping TypeName="DBEntities.Post">
+        <MappingFragment StoreEntitySet="Post">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="PostId" ColumnName="PostId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -66,6 +66,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -235,6 +236,8 @@
     <Content Include="Views\Shared\_LogOnPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
+    <Content Include="Views\Blog\Index.cshtml" />
+    <Content Include="Views\Blog\AddPost.cshtml" />
     <None Include="_bin_deployableAssemblies\amd64\Microsoft.VC90.CRT\README_PLK.txt" />
     <None Include="_bin_deployableAssemblies\amd64\Microsoft.VC90.CRT\README_ENU.txt" />
     <None Include="_bin_deployableAssemblies\amd64\Microsoft.VC90.CRT\msvcr90.dll" />
@@ -292,6 +295,10 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Blog.Repository\Blog.Repository.csproj">
+      <Project>{10E89403-B748-47B6-82D7-EB695F77C09D}</Project>
+      <Name>Blog.Repository</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Common.Repository\Common.Repository.csproj">
       <Project>{02744FF0-E6A7-409E-B455-A69A2E1FC842}</Project>
       <Name>Common.Repository</Name>

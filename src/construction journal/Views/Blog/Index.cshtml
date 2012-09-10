@@ -1,0 +1,27 @@
+﻿@model Models.Partial.BlogViewData
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<table>
+    <tr>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model.Posts) {
+    <tr>
+        <td>
+
+        @item.Text
+        @item.CreationDate.ToShortDateString()
+        
+        </td>
+    </tr>
+}
+
+</table>
+
+@Html.ActionLink("Dodaj wpis", "AddPost")

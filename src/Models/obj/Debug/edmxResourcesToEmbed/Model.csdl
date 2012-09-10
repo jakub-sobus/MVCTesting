@@ -1,8 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="dbadce929125d548b3b43fa0a900f524c4Model" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
-  <EntityContainer Name="dbadce929125d548b3b43fa0a900f524c4Entities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="Cities" EntityType="dbadce929125d548b3b43fa0a900f524c4Model.City" />
-    <EntitySet Name="Users" EntityType="dbadce929125d548b3b43fa0a900f524c4Model.User" />
+<Schema Namespace="DBEntities" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="DataBaseEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Cities" EntityType="DBEntities.City" />
+    <EntitySet Name="Users" EntityType="DBEntities.User" />
+    <EntitySet Name="Posts" EntityType="DBEntities.Post" />
+    <AssociationSet Name="FK_Post_Users" Association="DBEntities.FK_Post_Users">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Post" EntitySet="Posts" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="City">
     <Key>
@@ -15,7 +20,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="String" MaxLength="25" Unicode="true" FixedLength="false" />
     <Property Name="Surname" Type="String" MaxLength="25" Unicode="true" FixedLength="false" />
     <Property Name="Email" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
@@ -26,5 +31,28 @@
     <Property Name="Apartment_number" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
     <Property Name="username" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
     <Property Name="Zip_code" Type="String" MaxLength="6" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Posts" Relationship="DBEntities.FK_Post_Users" FromRole="User" ToRole="Post" />
   </EntityType>
+  <EntityType Name="Post">
+    <Key>
+      <PropertyRef Name="PostId" />
+    </Key>
+    <Property Type="Int32" Name="PostId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Text" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="CreationDate" Nullable="false" />
+    <Property Type="Int32" Name="UserId" Nullable="false" />
+    <NavigationProperty Name="User" Relationship="DBEntities.FK_Post_Users" FromRole="Post" ToRole="User" />
+  </EntityType>
+  <Association Name="FK_Post_Users">
+    <End Type="DBEntities.User" Role="User" Multiplicity="1" />
+    <End Type="DBEntities.Post" Role="Post" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Post">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

@@ -14,6 +14,11 @@ namespace Models
     
     public partial class User
     {
+        public User()
+        {
+            this.Posts = new HashSet<Post>();
+        }
+    
         public int Id { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
@@ -25,5 +30,7 @@ namespace Models
         public string Apartment_number { get; set; }
         public string username { get; set; }
         public string Zip_code { get; set; }
+    
+        public virtual ICollection<Post> Posts { get; set; }
     }
 }
