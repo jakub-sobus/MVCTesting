@@ -41,6 +41,11 @@ namespace construction_journal.Controllers
                 photo.UserID = userRepository.GetUserInfo(User.Identity.Name).Id;
                 repository.InsertPhoto(photo);
 
+                if (!Directory.Exists(Server.MapPath("~/uploads")))
+                {
+                    Directory.CreateDirectory(Server.MapPath("~/uploads"));
+                } 
+
                 if (file != null && file.ContentLength > 0)
                 {
 
