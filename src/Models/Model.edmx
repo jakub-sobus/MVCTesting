@@ -7,8 +7,13 @@
     <Schema Namespace="DBEntities.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="DBEntitiesStoreContainer">
           <EntitySet Name="Cities" EntityType="DBEntities.Store.Cities" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Photo" EntityType="DBEntities.Store.Photo" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Post" EntityType="DBEntities.Store.Post" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Users" EntityType="DBEntities.Store.Users" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Photo_Users" Association="DBEntities.Store.FK_Photo_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Photo" EntitySet="Photo" />
+          </AssociationSet>
           <AssociationSet Name="FK_Post_Users" Association="DBEntities.Store.FK_Post_Users">
             <End Role="Users" EntitySet="Users" />
             <End Role="Post" EntitySet="Post" />
@@ -20,6 +25,16 @@
           </Key>
           <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="City_name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Photo">
+          <Key>
+            <PropertyRef Name="PhotoID" />
+          </Key>
+          <Property Name="PhotoID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="AddDate" Type="datetime" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="255" />
+          <Property Name="PhotoName" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Post">
           <Key>
@@ -46,6 +61,18 @@
           <Property Name="username" Type="nvarchar" MaxLength="50" />
           <Property Name="Zip_code" Type="nvarchar" MaxLength="6" />
         </EntityType>
+        <Association Name="FK_Photo_Users">
+          <End Role="Users" Type="DBEntities.Store.Users" Multiplicity="1" />
+          <End Role="Photo" Type="DBEntities.Store.Photo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Photo">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Post_Users">
           <End Role="Users" Type="DBEntities.Store.Users" Multiplicity="1" />
           <End Role="Post" Type="DBEntities.Store.Post" Multiplicity="*" />
@@ -69,6 +96,11 @@
           <AssociationSet Name="FK_Post_Users" Association="DBEntities.FK_Post_Users">
             <End Role="User" EntitySet="Users" />
             <End Role="Post" EntitySet="Posts" />
+          </AssociationSet>
+          <EntitySet Name="Photos" EntityType="DBEntities.Photo" />
+          <AssociationSet Name="FK_Photo_Users" Association="DBEntities.FK_Photo_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Photo" EntitySet="Photos" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="City">
@@ -94,6 +126,7 @@
           <Property Name="username" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="Zip_code" Type="String" MaxLength="6" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="Posts" Relationship="DBEntities.FK_Post_Users" FromRole="User" ToRole="Post" />
+          <NavigationProperty Name="Photos" Relationship="DBEntities.FK_Photo_Users" FromRole="User" ToRole="Photo" />
         </EntityType>
         <EntityType Name="Post">
           <Key>
@@ -114,6 +147,29 @@
             </Principal>
             <Dependent Role="Post">
               <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Photo">
+          <Key>
+            <PropertyRef Name="PhotoID" />
+          </Key>
+          <Property Type="Int32" Name="PhotoID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="UserID" Nullable="false" />
+          <Property Type="DateTime" Name="AddDate" Nullable="false" />
+          <Property Type="String" Name="Description" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PhotoName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="User" Relationship="DBEntities.FK_Photo_Users" FromRole="Photo" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_Photo_Users">
+          <End Type="DBEntities.User" Role="User" Multiplicity="1" />
+          <End Type="DBEntities.Photo" Role="Photo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Photo">
+              <PropertyRef Name="UserID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -150,6 +206,17 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Photos">
+            <EntityTypeMapping TypeName="DBEntities.Photo">
+              <MappingFragment StoreEntitySet="Photo">
+                <ScalarProperty Name="PhotoName" ColumnName="PhotoName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="AddDate" ColumnName="AddDate" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="PhotoID" ColumnName="PhotoID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -178,6 +245,12 @@
         <AssociationConnector Association="DBEntities.FK_Post_Users" >
           <ConnectorPoint PointX="4.25" PointY="2.2633854047457378" />
           <ConnectorPoint PointX="5" PointY="2.2633854047457378" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="DBEntities.Photo" Width="1.5" PointX="5" PointY="4.375" Height="1.9436327856779094" />
+        <AssociationConnector Association="DBEntities.FK_Photo_Users" >
+          <ConnectorPoint PointX="3.5" PointY="3.8616666189829503" />
+          <ConnectorPoint PointX="3.5" PointY="5.3468163928389547" />
+          <ConnectorPoint PointX="5" PointY="5.3468163928389547" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>

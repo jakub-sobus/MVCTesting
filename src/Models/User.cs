@@ -17,6 +17,7 @@ namespace Models
         public User()
         {
             this.Posts = new HashSet<Post>();
+            this.Photos = new HashSet<Photo>();
         }
     
         public int Id { get; set; }
@@ -32,5 +33,6 @@ namespace Models
         public string Zip_code { get; set; }
     
         public virtual ICollection<Post> Posts { get; set; }
+        public virtual ICollection<Photo> Photos { get; set; }
     }
 }

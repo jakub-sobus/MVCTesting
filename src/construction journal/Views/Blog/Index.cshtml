@@ -1,27 +1,36 @@
 ﻿@model Models.Partial.BlogViewData
-
 @{
     ViewBag.Title = "Index";
 }
-
-<h2>Index</h2>
-
-<table>
-    <tr>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model.Posts) {
-    <tr>
-        <td>
-
-        @item.Text
-        @item.CreationDate.ToShortDateString()
-        
-        </td>
-    </tr>
+<h2>
+    Twój profil</h2>
+@foreach (var item in Model.Posts)
+{
+    <table>
+        <tr>
+            <th>
+            </th>
+        </tr>
+        <tr>
+            <td>
+                @item.Text
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @item.CreationDate.ToString()
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @item.User.Name
+            </td>
+        </tr>
+    </table>
+    
+    <br />
+    <br />
+    <br />
 }
-
-</table>
 
 @Html.ActionLink("Dodaj wpis", "AddPost")

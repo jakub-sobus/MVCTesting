@@ -13,3 +13,5 @@ D:\construction journal online\construction journal\construction journal\obj\Deb
 D:\construction journal online\construction journal\construction journal\obj\Debug\construction journal.pdb
 D:\construction journal online\construction journal\construction journal\bin\Blog.Repository.dll
 D:\construction journal online\construction journal\construction journal\bin\Blog.Repository.pdb
+D:\construction journal online\construction journal\construction journal\bin\Photo.Repository.dll
+D:\construction journal online\construction journal\construction journal\bin\Photo.Repository.pdb

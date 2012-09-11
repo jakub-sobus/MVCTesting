@@ -1,5 +1,5 @@
 ﻿@if(Request.IsAuthenticated) {
-    <text>Witaj <strong>@User.Identity.Name</strong>!
+    <text>Witaj <strong>@Html.ActionLink(@User.Identity.Name, "Index", "Blog")</strong>!
     [ @Html.ActionLink("Edytuj profil", "UpdateUserInfo", "Home") ] 
     [ @Html.ActionLink("Wyloguj", "LogOff", "Account") ]</text>
 }

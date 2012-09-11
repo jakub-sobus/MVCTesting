@@ -23,6 +23,7 @@ namespace construction_journal.Controllers
             User user = userRepository.GetUserInfo(User.Identity.Name);
             BlogViewData viewData = new BlogViewData();
             viewData.Posts = repository.GetUserPosts(user.Id);
+            viewData.Posts.Reverse();
             return View(viewData);
         }
 

@@ -67,6 +67,10 @@
       <DependentUpon>Model.edmx</DependentUpon>
     </Compile>
     <Compile Include="Partial\BlogViewData.cs" />
+    <Compile Include="Partial\GalleryViewData.cs" />
+    <Compile Include="Photo.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Post.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>

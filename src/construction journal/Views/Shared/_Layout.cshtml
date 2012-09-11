@@ -16,8 +16,19 @@
             </div>
             <div id="menucontainer">
                 <ul id="menu">
+                @{
+                    if (Request.IsAuthenticated)
+                { 
+                    <li>@Html.ActionLink("Twój profil", "Index", "Blog")</li>
+                    <li>@Html.ActionLink("Twoje zdjęcia", "ShowPhotos", "Photo")</li>
+                    <li>@Html.ActionLink("O nas", "About", "Home")</li>
+                }
+                    else
+                    {
                     <li>@Html.ActionLink("Strona główna", "Index", "Home")</li>
                     <li>@Html.ActionLink("O nas", "About", "Home")</li>
+                    }
+                }
                 </ul>
             </div>
         </div>

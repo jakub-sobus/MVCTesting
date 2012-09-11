@@ -8,6 +8,11 @@
       <End Role="User" EntitySet="Users" />
       <End Role="Post" EntitySet="Posts" />
     </AssociationSet>
+    <EntitySet Name="Photos" EntityType="DBEntities.Photo" />
+    <AssociationSet Name="FK_Photo_Users" Association="DBEntities.FK_Photo_Users">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Photo" EntitySet="Photos" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="City">
     <Key>
@@ -32,6 +37,7 @@
     <Property Name="username" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
     <Property Name="Zip_code" Type="String" MaxLength="6" Unicode="true" FixedLength="false" />
     <NavigationProperty Name="Posts" Relationship="DBEntities.FK_Post_Users" FromRole="User" ToRole="Post" />
+    <NavigationProperty Name="Photos" Relationship="DBEntities.FK_Photo_Users" FromRole="User" ToRole="Photo" />
   </EntityType>
   <EntityType Name="Post">
     <Key>
@@ -52,6 +58,29 @@
       </Principal>
       <Dependent Role="Post">
         <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Photo">
+    <Key>
+      <PropertyRef Name="PhotoID" />
+    </Key>
+    <Property Type="Int32" Name="PhotoID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="UserID" Nullable="false" />
+    <Property Type="DateTime" Name="AddDate" Nullable="false" />
+    <Property Type="String" Name="Description" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="PhotoName" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="User" Relationship="DBEntities.FK_Photo_Users" FromRole="Photo" ToRole="User" />
+  </EntityType>
+  <Association Name="FK_Photo_Users">
+    <End Type="DBEntities.User" Role="User" Multiplicity="1" />
+    <End Type="DBEntities.Photo" Role="Photo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Photo">
+        <PropertyRef Name="UserID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

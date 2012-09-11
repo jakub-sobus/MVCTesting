@@ -216,19 +216,27 @@ input[type="submit"] {
 
 table {
     border: solid 1px #e8eef4;
-    border-collapse: collapse;
+    border-radius: 8px 8px 0px 0px;
+    //border-collapse: collapse;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 table td {
     padding: 5px;
+    border-radius: 0px 0px 0px 0px;
     border: solid 1px #e8eef4;
+    text-align: center;
 }
 
-table th {
+table th 
+{
+    border-radius: 8px 8px 0px 0px;
     padding: 6px 5px;
-    text-align: left;
+    text-align: center;
     background-color: #e8eef4;
     border: solid 1px #e8eef4;
+    
 }
 
 /* MISC  

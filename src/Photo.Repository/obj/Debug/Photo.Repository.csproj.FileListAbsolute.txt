@@ -1,0 +1,7 @@
+D:\construction journal online\construction journal\Photo.Repository\bin\Debug\Photo.Repository.dll
+D:\construction journal online\construction journal\Photo.Repository\bin\Debug\Photo.Repository.pdb
+D:\construction journal online\construction journal\Photo.Repository\bin\Debug\Models.dll
+D:\construction journal online\construction journal\Photo.Repository\bin\Debug\Models.pdb
+D:\construction journal online\construction journal\Photo.Repository\obj\Debug\ResolveAssemblyReference.cache
+D:\construction journal online\construction journal\Photo.Repository\obj\Debug\Photo.Repository.dll
+D:\construction journal online\construction journal\Photo.Repository\obj\Debug\Photo.Repository.pdb

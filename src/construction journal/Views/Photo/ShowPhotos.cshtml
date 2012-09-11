@@ -1,0 +1,32 @@
+﻿@model Models.Partial.GalleryViewData
+
+@{
+    ViewBag.Title = "ShowPhotos";
+}
+
+<h2>Twoje zdjęcia</h2>
+
+<table>
+
+@foreach (var item in Model.Photos) {
+
+    string imageName = "/uploads/" + item.PhotoID + ".jpg"; 
+
+    <tr>
+        <td>
+        @Html.DisplayFor(modelItem => item.PhotoName)
+        </td>
+        <td>
+        
+           <a href="@Url.Content(@imageName)">    <img src="@Url.Content(@imageName)" alt="" width="75" height = "50"/></a>
+
+        </td>
+        <td>
+        @Html.DisplayFor(modelItem => item.Description)
+         </td>
+    </tr>
+}
+
+</table>
+
+@Html.ActionLink("Dodaj zdjęcie", "AddPhoto")
