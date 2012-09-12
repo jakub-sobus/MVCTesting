@@ -14,6 +14,11 @@ namespace Models
     
     public partial class Photo
     {
+        public Photo()
+        {
+            this.Posts = new HashSet<Post>();
+        }
+    
         public int PhotoID { get; set; }
         public int UserID { get; set; }
         public System.DateTime AddDate { get; set; }
@@ -21,5 +26,6 @@ namespace Models
         public string PhotoName { get; set; }
     
         public virtual User User { get; set; }
+        public virtual ICollection<Post> Posts { get; set; }
     }
 }

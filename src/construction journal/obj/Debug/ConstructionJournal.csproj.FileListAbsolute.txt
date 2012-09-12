@@ -1,17 +1,35 @@
 D:\construction journal online\construction journal\construction journal\bin\construction journal.dll
 D:\construction journal online\construction journal\construction journal\bin\construction journal.pdb
+D:\construction journal online\construction journal\construction journal\bin\Blog.Repository.dll
 D:\construction journal online\construction journal\construction journal\bin\Common.Repository.dll
 D:\construction journal online\construction journal\construction journal\bin\EntityFramework.dll
+D:\construction journal online\construction journal\construction journal\bin\Microsoft.Web.Infrastructure.dll
 D:\construction journal online\construction journal\construction journal\bin\Models.dll
+D:\construction journal online\construction journal\construction journal\bin\NuGet.Core.dll
+D:\construction journal online\construction journal\construction journal\bin\Photo.Repository.dll
+D:\construction journal online\construction journal\construction journal\bin\System.Web.Helpers.dll
+D:\construction journal online\construction journal\construction journal\bin\System.Web.Razor.dll
+D:\construction journal online\construction journal\construction journal\bin\System.Web.WebPages.Administration.dll
+D:\construction journal online\construction journal\construction journal\bin\System.Web.WebPages.Deployment.dll
+D:\construction journal online\construction journal\construction journal\bin\System.Web.WebPages.dll
+D:\construction journal online\construction journal\construction journal\bin\System.Web.WebPages.Razor.dll
 D:\construction journal online\construction journal\construction journal\bin\Users.Repository.dll
+D:\construction journal online\construction journal\construction journal\bin\WebMatrix.Data.dll
+D:\construction journal online\construction journal\construction journal\bin\WebMatrix.WebData.dll
+D:\construction journal online\construction journal\construction journal\bin\Blog.Repository.pdb
 D:\construction journal online\construction journal\construction journal\bin\Common.Repository.pdb
 D:\construction journal online\construction journal\construction journal\bin\Models.pdb
+D:\construction journal online\construction journal\construction journal\bin\Photo.Repository.pdb
 D:\construction journal online\construction journal\construction journal\bin\Users.Repository.pdb
 D:\construction journal online\construction journal\construction journal\bin\EntityFramework.xml
+D:\construction journal online\construction journal\construction journal\bin\Microsoft.Web.Infrastructure.xml
+D:\construction journal online\construction journal\construction journal\bin\System.Web.Helpers.xml
+D:\construction journal online\construction journal\construction journal\bin\System.Web.Razor.xml
+D:\construction journal online\construction journal\construction journal\bin\System.Web.WebPages.xml
+D:\construction journal online\construction journal\construction journal\bin\System.Web.WebPages.Deployment.xml
+D:\construction journal online\construction journal\construction journal\bin\System.Web.WebPages.Razor.xml
+D:\construction journal online\construction journal\construction journal\bin\WebMatrix.Data.xml
+D:\construction journal online\construction journal\construction journal\bin\WebMatrix.WebData.xml
 D:\construction journal online\construction journal\construction journal\obj\Debug\ResolveAssemblyReference.cache
 D:\construction journal online\construction journal\construction journal\obj\Debug\construction journal.dll
 D:\construction journal online\construction journal\construction journal\obj\Debug\construction journal.pdb
-D:\construction journal online\construction journal\construction journal\bin\Blog.Repository.dll
-D:\construction journal online\construction journal\construction journal\bin\Blog.Repository.pdb
-D:\construction journal online\construction journal\construction journal\bin\Photo.Repository.dll
-D:\construction journal online\construction journal\construction journal\bin\Photo.Repository.pdb

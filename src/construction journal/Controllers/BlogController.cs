@@ -43,5 +43,7 @@ namespace construction_journal.Controllers
             return RedirectToAction("Index", "Blog");
         }
 
+        
+
     }
 }

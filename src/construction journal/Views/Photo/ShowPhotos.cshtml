@@ -18,11 +18,14 @@
         </td>
         <td>
         
-           <a href="@Url.Content(@imageName)">    <img src="@Url.Content(@imageName)" alt="" width="75" height = "50"/></a>
+           <a href="@Url.Content(@imageName)">    <img src="@Url.Content(@imageName)" alt="" width="25%" height = "25%"/></a>
 
         </td>
         <td>
         @Html.DisplayFor(modelItem => item.Description)
+         </td>
+         <td>
+        @Html.DisplayFor(modelItem => item.AddDate)
          </td>
     </tr>
 }

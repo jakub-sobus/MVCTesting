@@ -8,6 +8,5 @@ namespace Models.Partial
     public class BlogViewData
     {
         public List<Post> Posts { get; set; }
-
     }
 }

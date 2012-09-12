@@ -9,6 +9,10 @@
       <End Role="Users" EntitySet="Users" />
       <End Role="Photo" EntitySet="Photo" />
     </AssociationSet>
+    <AssociationSet Name="FK_Post_Photo" Association="DBEntities.Store.FK_Post_Photo">
+      <End Role="Photo" EntitySet="Photo" />
+      <End Role="Post" EntitySet="Post" />
+    </AssociationSet>
     <AssociationSet Name="FK_Post_Users" Association="DBEntities.Store.FK_Post_Users">
       <End Role="Users" EntitySet="Users" />
       <End Role="Post" EntitySet="Post" />
@@ -39,6 +43,7 @@
     <Property Name="Text" Type="text" />
     <Property Name="CreationDate" Type="datetime" Nullable="false" />
     <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="PhotoId" Type="int" />
   </EntityType>
   <EntityType Name="Users">
     <Key>
@@ -65,6 +70,18 @@
       </Principal>
       <Dependent Role="Photo">
         <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Post_Photo">
+    <End Role="Photo" Type="DBEntities.Store.Photo" Multiplicity="0..1" />
+    <End Role="Post" Type="DBEntities.Store.Post" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Photo">
+        <PropertyRef Name="PhotoID" />
+      </Principal>
+      <Dependent Role="Post">
+        <PropertyRef Name="PhotoId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

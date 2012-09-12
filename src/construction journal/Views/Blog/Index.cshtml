@@ -11,6 +11,16 @@
             <th>
             </th>
         </tr>
+        @{if (item.PhotoId != null)
+          {
+              string imageName = "/uploads/" + item.PhotoId + ".jpg"; 
+        <tr>
+            <td>
+                <a href="@Url.Content(@imageName)">    <img src="@Url.Content(@imageName)" alt="" width="10%" height = "10%"/></a>
+            </td>
+        </tr>
+          }
+        }
         <tr>
             <td>
                 @item.Text

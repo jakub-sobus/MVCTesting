@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Users.Repository;
 using Photo.Repository;
+using Blog.Repository;
 using Models;
 using Models.Partial;
 using System.IO;
@@ -15,6 +16,7 @@ namespace construction_journal.Controllers
     {
         private PhotoRepository repository = new PhotoRepository();
         private UsersRepository userRepository = new UsersRepository();
+        private BlogRepository blogRepository = new BlogRepository();
 
         //
         // GET: /Photo/
@@ -35,6 +37,7 @@ namespace construction_journal.Controllers
         [HttpPost]
         public ActionResult AddPhoto(Models.Photo photo, HttpPostedFileBase file)
         {
+
             if (ModelState.IsValid)
             {
                 photo.AddDate = DateTime.Now;
@@ -52,7 +55,10 @@ namespace construction_journal.Controllers
                     var path = Path.Combine(Server.MapPath("~/uploads"),
                         photo.PhotoID.ToString() + ".jpg");
                     file.SaveAs(path);
+                    
                 }
+
+                AddPhotoPost(photo);
 
                 return RedirectToAction("ShowPhotos");
             }
@@ -67,6 +73,16 @@ namespace construction_journal.Controllers
             photos.Photos.Reverse();
 
             return View(photos);
+        }
+
+        public void AddPhotoPost(Models.Photo photo)
+        {
+            Post newPost = new Post();
+            newPost.CreationDate = DateTime.Now;
+            newPost.UserId = userRepository.GetUserInfo(User.Identity.Name).Id;
+            newPost.PhotoId = photo.PhotoID;
+            newPost.Text = photo.Description;
+            blogRepository.InsertPost(newPost);
         }
     }
 }

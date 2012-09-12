@@ -18,7 +18,9 @@ namespace Models
         public string Text { get; set; }
         public System.DateTime CreationDate { get; set; }
         public int UserId { get; set; }
+        public Nullable<int> PhotoId { get; set; }
     
+        public virtual Photo Photo { get; set; }
         public virtual User User { get; set; }
     }
 }
