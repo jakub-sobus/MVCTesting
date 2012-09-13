@@ -50,7 +50,9 @@
                 $("#file").makeAsyncUploader({
                     upload_url: "/Photo/AsyncUpload", // Important! This isn't a directory, it's a HANDLER such as an ASP.NET MVC action method, or a PHP file, or a Classic ASP file, or an ASP.NET .ASHX handler. The handler should save the file to disk (or database).
                     flash_url: '/Scripts/upload/swfupload.swf',
-                    button_image_url: '/Scripts/upload/blankButton.png'
+                    button_image_url: '/Scripts/upload/blankButton.png',
+                    file_size_limit: '5 MB',
+                    disableDuringUpload: 'INPUT[type=’submit’]'
                 });
             });
         </script>

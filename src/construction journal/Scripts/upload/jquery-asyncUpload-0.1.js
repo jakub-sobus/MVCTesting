@@ -20,7 +20,7 @@
 
             // Instantiate the uploader SWF
             var swfu;
-            var width = 109, height = 21;
+            var width = 109, height = 22;
             if (options) {
                 width = options.width || width;
                 height = options.height || height;
