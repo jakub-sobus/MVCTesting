@@ -7,7 +7,7 @@
             // Put in place a new container with a unique ID
             var id = $(this).attr("id");
             var container = $("<span class='asyncUploader'/>");
-            container.append($("<div class='ProgressBar'> <div>&nbsp;</div> </div>"));
+            container.append($("<div class='ProgressBar' > <div>&nbsp;</div> </div>"));
             container.append($("<span id='" + id + "_completedMessage'/>"));
             container.append($("<span id='" + id + "_uploading'>Wysyłanie... <input type='button' value='Anuluj'/></span>"));
             container.append($("<span id='" + id + "_swf'/>"));
@@ -55,6 +55,8 @@
                     swfu.setButtonDimensions(0, height);
                     $("input[name$=_filename]", container).val("");
                     $("input[name$=_guid]", container).val("");
+                    $("div.ProgressBar", container).css("width", "25%");
+                    $("div.ProgressBar", container).css("border", "2px solid #CCCCCC");
                     $("div.ProgressBar div", container).css("width", "0px");
                     $("div.ProgressBar div", container).css("background-color", "#C8E4FF");
                     $("div.ProgressBar", container).show();
@@ -84,7 +86,7 @@
                         swfu.setButtonDimensions(0, 0);
                     };
                     if ($("input[name$=_filename]", container).val() != "") // Success
-                        $("div.ProgressBar div", container).animate({ width: "50%" }, { duration: "fast", queue: false, complete: clearup });
+                        $("div.ProgressBar div", container).animate({ width: "25%" }, { duration: "fast", queue: false, complete: clearup });
                     else // Fail
                         clearup();
 
@@ -94,7 +96,7 @@
 
                 // Called periodically during upload (moves the progess bar along)
                 upload_progress_handler: function (file, bytes, total) {
-                    var percent = 50 * bytes / total;
+                    var percent = 25 * bytes / total;
                     $("div.ProgressBar div", container).animate({ width: percent + "%" }, { duration: 500, queue: false });
                     $("div.ProgressBar div", container).html("{0}%"
                                 .replace("{0}", Math.round(percent*2)));
