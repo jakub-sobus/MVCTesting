@@ -1,9 +1,9 @@
 ﻿/// jQuery plugin to add support for SwfUpload
 /// (c) 2008 Steven Sanderson
 
-(function($) {
-    $.fn.makeAsyncUploader = function(options) {
-        return this.each(function() {
+(function ($) {
+    $.fn.makeAsyncUploader = function (options) {
+        return this.each(function () {
             // Put in place a new container with a unique ID
             var id = $(this).attr("id");
             var container = $("<span class='asyncUploader'/>");
@@ -42,20 +42,21 @@
                 button_text_top_padding: 1,
 
                 // Called when the user chooses a new file from the file browser prompt (begins the upload)
-                file_queued_handler: function(file) { swfu.startUpload(); },
+                file_queued_handler: function (file) { swfu.startUpload(); },
 
                 // Called when a file doesn't even begin to upload, because of some error
-                file_queue_error_handler: function(file, code, msg) { alert("Przepraszamy, plik nie został wysłany: " + msg); },
+                file_queue_error_handler: function (file, code, msg) { alert("Przepraszamy, plik nie został wysłany: " + msg); },
 
                 // Called when an error occurs during upload
-                upload_error_handler: function(file, code, msg) { alert("Przepraszamy, połączenie zostało zerwane, proszę spróbować ponownie: " + msg); },
+                upload_error_handler: function (file, code, msg) { alert("Przepraszamy, połączenie zostało zerwane, proszę spróbować ponownie: " + msg); },
 
                 // Called when upload is beginning (switches controls to uploading state)
-                upload_start_handler: function() {
+                upload_start_handler: function () {
                     swfu.setButtonDimensions(0, height);
                     $("input[name$=_filename]", container).val("");
                     $("input[name$=_guid]", container).val("");
-                    $("div.ProgressBar div", container).css("width", "1px");
+                    $("div.ProgressBar div", container).css("width", "0px");
+                    $("div.ProgressBar div", container).css("background-color", "#C8E4FF");
                     $("div.ProgressBar", container).show();
                     $("span[id$=_uploading]", container).show();
                     $("span[id$=_completedMessage]", container).html("").hide();
@@ -65,7 +66,7 @@
                 },
 
                 // Called when upload completed successfully (puts success details into hidden fields)
-                upload_success_handler: function(file, response) {
+                upload_success_handler: function (file, response) {
                     $("input[name$=_filename]", container).val(file.name);
                     $("input[name$=_guid]", container).val(response);
                     $("span[id$=_completedMessage]", container).html("Wysłano <b>{0}</b> ({1} KB)"
@@ -75,15 +76,15 @@
                 },
 
                 // Called when upload is finished (either success or failure - reverts controls to non-uploading state)
-                upload_complete_handler: function() {
-                    var clearup = function() {
+                upload_complete_handler: function () {
+                    var clearup = function () {
                         $("div.ProgressBar", container).hide();
                         $("span[id$=_completedMessage]", container).show();
                         $("span[id$=_uploading]", container).hide();
-                        swfu.setButtonDimensions(width, height);
+                        swfu.setButtonDimensions(0, 0);
                     };
                     if ($("input[name$=_filename]", container).val() != "") // Success
-                        $("div.ProgressBar div", container).animate({ width: "100%" }, { duration: "fast", queue: false, complete: clearup });
+                        $("div.ProgressBar div", container).animate({ width: "50%" }, { duration: "fast", queue: false, complete: clearup });
                     else // Fail
                         clearup();
 
@@ -92,15 +93,18 @@
                 },
 
                 // Called periodically during upload (moves the progess bar along)
-                upload_progress_handler: function(file, bytes, total) {
-                    var percent = 100 * bytes / total;
+                upload_progress_handler: function (file, bytes, total) {
+                    var percent = 50 * bytes / total;
+                    var percentt = Math.round((percent * 2)/100);
                     $("div.ProgressBar div", container).animate({ width: percent + "%" }, { duration: 500, queue: false });
+                    $("div.ProgressBar div", container).html("{0}%"
+                                .replace("{0}", percentt));
                 }
             };
             swfu = new SWFUpload($.extend(defaults, options || {}));
 
             // Called when user clicks "cancel" (forces the upload to end, and eliminates progress bar immediately)
-            $("span[id$=_uploading] input[type='button']", container).click(function() {
+            $("span[id$=_uploading] input[type='button']", container).click(function () {
                 swfu.cancelUpload(null, false);
             });
 

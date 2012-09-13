@@ -253,13 +253,6 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\modernizr-1.7.js" />
     <Content Include="Scripts\modernizr-1.7.min.js" />
-    <Content Include="Scripts\uploadify\Change Log.txt" />
-    <Content Include="Scripts\uploadify\jquery.uploadify.js" />
-    <Content Include="Scripts\uploadify\jquery.uploadify.min.js" />
-    <Content Include="Scripts\uploadify\license.txt" />
-    <Content Include="Scripts\uploadify\uploadify-cancel.png" />
-    <Content Include="Content\uploadify.css" />
-    <Content Include="Scripts\uploadify\uploadify.swf" />
     <Content Include="Scripts\upload\blankButton.png" />
     <Content Include="Scripts\upload\jquery-asyncUpload-0.1.js" />
     <Content Include="Scripts\upload\swfupload license.txt" />
@@ -300,9 +293,6 @@
     <Content Include="Views\Blog\AddPost.cshtml" />
     <Content Include="Views\Photo\AddPhoto.cshtml" />
     <Content Include="Views\Photo\ShowPhotos.cshtml" />
-    <None Include="Scripts\uploadify\check-exists.php" />
-    <None Include="Scripts\uploadify\index.php" />
-    <None Include="Scripts\uploadify\uploadify.php" />
     <None Include="_bin_deployableAssemblies\amd64\Microsoft.VC90.CRT\README_PLK.txt" />
     <None Include="_bin_deployableAssemblies\amd64\Microsoft.VC90.CRT\README_ENU.txt" />
     <None Include="_bin_deployableAssemblies\amd64\Microsoft.VC90.CRT\msvcr90.dll" />
