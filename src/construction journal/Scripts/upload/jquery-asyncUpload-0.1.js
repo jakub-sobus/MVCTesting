@@ -9,7 +9,7 @@
             var container = $("<span class='asyncUploader'/>");
             container.append($("<div class='ProgressBar'> <div>&nbsp;</div> </div>"));
             container.append($("<span id='" + id + "_completedMessage'/>"));
-            container.append($("<span id='" + id + "_uploading'>Uploading... <input type='button' value='Cancel'/></span>"));
+            container.append($("<span id='" + id + "_uploading'>Wysyłanie... <input type='button' value='Anuluj'/></span>"));
             container.append($("<span id='" + id + "_swf'/>"));
             container.append($("<input type='hidden' name='" + id + "_filename'/>"));
             container.append($("<input type='hidden' name='" + id + "_guid'/>"));
@@ -20,7 +20,7 @@
 
             // Instantiate the uploader SWF
             var swfu;
-            var width = 109, height = 22;
+            var width = 109, height = 21;
             if (options) {
                 width = options.width || width;
                 height = options.height || height;
@@ -29,15 +29,15 @@
                 flash_url: "swfupload.swf",
                 upload_url: "/Home/AsyncUpload",
                 file_size_limit: "3 MB",
-                file_types: "*.*",
-                file_types_description: "All Files",
+                file_types: "*.jpg;*.jpeg;*.bmp;",
+                file_types_description: "Grafika",
                 debug: false,
 
                 button_image_url: "blankButton.png",
                 button_width: width,
                 button_height: height,
                 button_placeholder_id: id + "_swf",
-                button_text: "<font face='Arial' size='13pt'>Choose file</span>",
+                button_text: "Wybierz plik",
                 button_text_left_padding: (width - 70) / 2,
                 button_text_top_padding: 1,
 
@@ -45,17 +45,17 @@
                 file_queued_handler: function(file) { swfu.startUpload(); },
 
                 // Called when a file doesn't even begin to upload, because of some error
-                file_queue_error_handler: function(file, code, msg) { alert("Sorry, your file wasn't uploaded: " + msg); },
+                file_queue_error_handler: function(file, code, msg) { alert("Przepraszamy, plik nie został wysłany: " + msg); },
 
                 // Called when an error occurs during upload
-                upload_error_handler: function(file, code, msg) { alert("Sorry, your file wasn't uploaded: " + msg); },
+                upload_error_handler: function(file, code, msg) { alert("Przepraszamy, połączenie zostało zerwane, proszę spróbować ponownie: " + msg); },
 
                 // Called when upload is beginning (switches controls to uploading state)
                 upload_start_handler: function() {
                     swfu.setButtonDimensions(0, height);
                     $("input[name$=_filename]", container).val("");
                     $("input[name$=_guid]", container).val("");
-                    $("div.ProgressBar div", container).css("width", "0px");
+                    $("div.ProgressBar div", container).css("width", "1px");
                     $("div.ProgressBar", container).show();
                     $("span[id$=_uploading]", container).show();
                     $("span[id$=_completedMessage]", container).html("").hide();
@@ -68,7 +68,7 @@
                 upload_success_handler: function(file, response) {
                     $("input[name$=_filename]", container).val(file.name);
                     $("input[name$=_guid]", container).val(response);
-                    $("span[id$=_completedMessage]", container).html("Uploaded <b>{0}</b> ({1} KB)"
+                    $("span[id$=_completedMessage]", container).html("Wysłano <b>{0}</b> ({1} KB)"
                                 .replace("{0}", file.name)
                                 .replace("{1}", Math.round(file.size / 1024))
                             );
@@ -106,7 +106,7 @@
 
             // Give the effect of preserving state, if requested
             if (options.existingFilename || "" != "") {
-                $("span[id$=_completedMessage]", container).html("Uploaded <b>{0}</b> ({1} KB)"
+                $("span[id$=_completedMessage]", container).html("Wysłano <b>{0}</b> ({1} KB)"
                                 .replace("{0}", options.existingFilename)
                                 .replace("{1}", options.existingFileSize ? Math.round(options.existingFileSize / 1024) : "?")
                             ).show();

@@ -35,7 +35,7 @@ namespace construction_journal.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddPhoto(Models.Photo photo, HttpPostedFileBase file)
+        public ActionResult AddPhoto(Guid? file_guid, Models.Photo photo, HttpPostedFileBase file)
         {
 
             if (ModelState.IsValid)
@@ -44,18 +44,19 @@ namespace construction_journal.Controllers
                 photo.UserID = userRepository.GetUserInfo(User.Identity.Name).Id;
                 repository.InsertPhoto(photo);
 
-                if (!Directory.Exists(Server.MapPath("~/uploads")))
-                {
-                    Directory.CreateDirectory(Server.MapPath("~/uploads"));
-                } 
-
                 if (file != null && file.ContentLength > 0)
                 {
 
                     var path = Path.Combine(Server.MapPath("~/uploads"),
                         photo.PhotoID.ToString() + ".jpg");
                     file.SaveAs(path);
-                    
+
+                }
+                else
+                {
+                    System.IO.File.Move(Path.Combine(Server.MapPath("~/uploads"),
+                        file_guid + ".jpg"), Path.Combine(Server.MapPath("~/uploads"),
+                        photo.PhotoID.ToString() + ".jpg"));
                 }
 
                 AddPhotoPost(photo);
@@ -83,6 +84,24 @@ namespace construction_journal.Controllers
             newPost.PhotoId = photo.PhotoID;
             newPost.Text = photo.Description;
             blogRepository.InsertPost(newPost);
+        }
+
+
+        public string AsyncUpload()
+        {
+            string fileName = Guid.NewGuid().ToString();
+
+            if (!Directory.Exists(Server.MapPath("~/uploads")))
+            {
+                Directory.CreateDirectory(Server.MapPath("~/uploads"));
+            } 
+
+            var path = Path.Combine(Server.MapPath("~/uploads"),
+                        fileName + ".jpg");
+
+            Request.Files[0].SaveAs(path);
+
+            return fileName;
         }
     }
 }
