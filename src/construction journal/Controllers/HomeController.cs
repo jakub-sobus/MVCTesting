@@ -22,6 +22,7 @@ namespace ConstructionJournal.Controllers
             return View();
         }
 
+        [Authorize]
         [HttpGet]
         public ActionResult UpdateUserInfo()
         {
@@ -31,6 +32,7 @@ namespace ConstructionJournal.Controllers
             return View(oldInfo);
         }
 
+        [Authorize]
         [HttpPost]
         public ActionResult UpdateUserInfo(User user)
         {

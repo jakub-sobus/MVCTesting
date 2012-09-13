@@ -18,6 +18,7 @@ namespace construction_journal.Controllers
         //
         // GET: /Blog/
 
+        [Authorize]
         public ActionResult Index()
         {
             User user = userRepository.GetUserInfo(User.Identity.Name);
@@ -27,13 +28,15 @@ namespace construction_journal.Controllers
             return View(viewData);
         }
 
+        [Authorize]
         [HttpGet]
         public ActionResult AddPost()
         {
             Post newPost = new Post();
             return View(newPost);
         }
-
+        
+        [Authorize]
         [HttpPost]
         public ActionResult AddPost(Post post)
         {

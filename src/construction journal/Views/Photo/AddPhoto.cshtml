@@ -33,37 +33,19 @@
         <br />
         <br />
 
-        @*<script type="text/javascript">
-            function fileselectedchange(obj) {
-                var fName = obj.value;
-                var fileEXT = fName.substring(fName.indexOf('.') + 1, fName.length);
-                if ((fileEXT.toUpperCase() != 'BMP') && (fileEXT.toUpperCase() != 'JPG')) {
-                    alert('Dopuszczalne tylko pliki w formacie: JPG/JPEG, BMP !')
-                    document.getElementById('input1').innerHTML = divInnerHTML;
-                    return false;
-                }
-            }
-        </script>*@
-
         <script>
             $(function () {
                 $("#file").makeAsyncUploader({
-                    upload_url: "/Photo/AsyncUpload", // Important! This isn't a directory, it's a HANDLER such as an ASP.NET MVC action method, or a PHP file, or a Classic ASP file, or an ASP.NET .ASHX handler. The handler should save the file to disk (or database).
+                    upload_url: "/Photo/AsyncUpload",
                     flash_url: '/Scripts/upload/swfupload.swf',
                     button_image_url: '/Scripts/upload/blankButton.png',
-                    file_size_limit: '5 MB',
-                    disableDuringUpload: 'INPUT[type=’submit’]'
+                    file_size_limit: '15 MB',
+                    disableDuringUpload: 'INPUT[type=submit]'
                 });
             });
         </script>
 
-        <div id="input1">
             <input id="file" type="file" name="file" onchange="fileselectedchange(this);" />
-        </div>
-
-      @*  <script>
-            var divInnerHTML = document.getElementById('input1').innerHTML;
-        </script>*@
 
         <p>
             <input type="submit" value="Dodaj zdjęcie" />

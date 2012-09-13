@@ -20,12 +20,13 @@ namespace construction_journal.Controllers
 
         //
         // GET: /Photo/
-
+        [Authorize]
         public ActionResult Index()
         {
             return View();
         }
 
+        [Authorize]
         [HttpGet]
         public ActionResult AddPhoto()
         {
@@ -34,6 +35,7 @@ namespace construction_journal.Controllers
             return View();
         }
 
+        [Authorize]
         [HttpPost]
         public ActionResult AddPhoto(Guid? file_guid, Models.Photo photo, HttpPostedFileBase file)
         {
@@ -67,6 +69,7 @@ namespace construction_journal.Controllers
             return View();
         }
 
+        [Authorize]
         public ActionResult ShowPhotos()
         {
             GalleryViewData photos = new GalleryViewData();
@@ -76,6 +79,7 @@ namespace construction_journal.Controllers
             return View(photos);
         }
 
+        [Authorize]
         public void AddPhotoPost(Models.Photo photo)
         {
             Post newPost = new Post();

@@ -154,6 +154,11 @@ namespace ConstructionJournal.Controllers
             return View();
         }
 
+        public ActionResult Login()
+        {
+            return RedirectToAction("LogOn");
+        }
+
         #region Status Codes
         private static string ErrorCodeToString(MembershipCreateStatus createStatus)
         {
