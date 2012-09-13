@@ -1,6 +1,19 @@
 ﻿/// jQuery plugin to add support for SwfUpload
 /// (c) 2008 Steven Sanderson
 
+
+
+function sleep(milliseconds) {
+    var start = new Date().getTime();
+    for (var i = 0; i < 1e7; i++) {
+        if ((new Date().getTime() - start) > milliseconds) {
+            break;
+        }
+    }
+}
+
+
+
 (function ($) {
     $.fn.makeAsyncUploader = function (options) {
         return this.each(function () {
@@ -86,7 +99,7 @@
                         swfu.setButtonDimensions(0, 0);
                     };
                     if ($("input[name$=_filename]", container).val() != "") // Success
-                        $("div.ProgressBar div", container).animate({ width: "25%" }, { duration: "fast", queue: false, complete: clearup });
+                        $("div.ProgressBar div", container).animate({ width: "100%" }, { duration: "fast", queue: false, complete: clearup });
                     else // Fail
                         clearup();
 
@@ -96,10 +109,10 @@
 
                 // Called periodically during upload (moves the progess bar along)
                 upload_progress_handler: function (file, bytes, total) {
-                    var percent = 25 * bytes / total;
-                    $("div.ProgressBar div", container).animate({ width: percent + "%" }, { duration: 500, queue: false });
-                    $("div.ProgressBar div", container).html("{0}%"
-                                .replace("{0}", Math.round(percent*2)));
+                    var percent = 100 * bytes / total;
+                    $("div.ProgressBar div", container).animate({ width: percent + "%" }, { duration: 100, queue: false });
+
+                    
                 }
             };
             swfu = new SWFUpload($.extend(defaults, options || {}));
