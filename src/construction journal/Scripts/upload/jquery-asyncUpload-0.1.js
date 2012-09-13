@@ -95,10 +95,9 @@
                 // Called periodically during upload (moves the progess bar along)
                 upload_progress_handler: function (file, bytes, total) {
                     var percent = 50 * bytes / total;
-                    var percentt = Math.round((percent * 2)/100);
                     $("div.ProgressBar div", container).animate({ width: percent + "%" }, { duration: 500, queue: false });
                     $("div.ProgressBar div", container).html("{0}%"
-                                .replace("{0}", percentt));
+                                .replace("{0}", Math.round(percent*2)));
                 }
             };
             swfu = new SWFUpload($.extend(defaults, options || {}));
