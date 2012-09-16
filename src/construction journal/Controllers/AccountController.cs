@@ -46,7 +46,7 @@ namespace ConstructionJournal.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("", "The user name or password provided is incorrect.");
+                    ModelState.AddModelError("", "Wprowadzony login i/lub hasło są nieprawidłowe!");
                 }
             }
 

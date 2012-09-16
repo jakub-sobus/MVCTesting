@@ -29,15 +29,29 @@ namespace ConstructionJournal.Controllers
             List<string> Cities = commonRepository.GetCities();
             ViewBag.autocompleteCities = Cities;
             User oldInfo = userRepository.GetUserInfo(User.Identity.Name);
-            return View(oldInfo);
+
+            UserInfoViewMetadata viewData = 
+                new UserInfoViewMetadata() { 
+                username=oldInfo.username,
+                Apartment_number=oldInfo.Apartment_number,
+                City=oldInfo.City,
+                Email=oldInfo.Email,
+                House_number=oldInfo.House_number,
+                Name=oldInfo.Name,
+                Project=oldInfo.Project,
+                Street=oldInfo.Street,
+                Surname=oldInfo.Surname,
+                Zip_code=oldInfo.Zip_code
+            };
+            return View(viewData);
         }
 
         [Authorize]
         [HttpPost]
-        public ActionResult UpdateUserInfo(User user)
+        public ActionResult UpdateUserInfo(UserInfoViewMetadata user)
         {
             userRepository.UpdateUserInfo(user);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Blog");
         }
 
         public ActionResult About()

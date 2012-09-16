@@ -71,13 +71,16 @@
     <Compile Include="Photo.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="PhotoMetadata.cs" />
     <Compile Include="Post.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="PostMetadata.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="User.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="UserInfoViewMetadata.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config">

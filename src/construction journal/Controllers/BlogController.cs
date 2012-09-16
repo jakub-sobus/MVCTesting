@@ -22,9 +22,8 @@ namespace construction_journal.Controllers
         public ActionResult Index()
         {
             User user = userRepository.GetUserInfo(User.Identity.Name);
-            BlogViewData viewData = new BlogViewData();
-            viewData.Posts = repository.GetUserPosts(user.Id);
-            viewData.Posts.Reverse();
+            List<Post> viewData = new List<Post>();
+            viewData = repository.GetUserPosts(user.Id);
             return View(viewData);
         }
 
@@ -40,10 +39,14 @@ namespace construction_journal.Controllers
         [HttpPost]
         public ActionResult AddPost(Post post)
         {
-            post.CreationDate = DateTime.Now;
-            post.UserId = userRepository.GetUserInfo(User.Identity.Name).Id;
-            repository.InsertPost(post);
-            return RedirectToAction("Index", "Blog");
+            if (ModelState.IsValid)
+            {
+                post.CreationDate = DateTime.Now;
+                post.UserId = userRepository.GetUserInfo(User.Identity.Name).Id;
+                repository.InsertPost(post);
+                return RedirectToAction("Index", "Blog");
+            }
+            return View();
         }
 
         

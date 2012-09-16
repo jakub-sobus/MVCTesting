@@ -12,22 +12,26 @@ body {
     color: #696969;
 }
 
-a:link {
+a#button {
+    padding: 10px 20px;
+    font-weight: bold;
+    text-decoration: none;
+    line-height: 2.8em;
+    background-color: #dfeffc;
     color: #034af3;
-    text-decoration: underline;
+    border-radius: 8px 8px 8px 8px;
+    -webkit-border-radius: 8px 8px 8px 8px;
+    -moz-border-radius: 8px 8px 8px 8px;
 }
 
-a:visited {
-    color: #CC7344;
-}
-
-a:hover {
-    color: #1d60ff;
+a:hover#button {
+    background-color: #C8E4FF;
     text-decoration: none;
 }
 
-a:active {
-    color: #FF9C3D;
+a:active#button {
+    background-color: #a6e2a6;
+    text-decoration: none;
 }
 
 p, ul {

@@ -10,6 +10,6 @@ namespace Users.Repository
     {
         void InsertUser(User user);
         User GetUserInfo(string username);
-        void UpdateUserInfo(User user);
+        void UpdateUserInfo(UserInfoViewMetadata user);
     }
 }

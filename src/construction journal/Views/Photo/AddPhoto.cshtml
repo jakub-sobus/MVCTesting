@@ -1,9 +1,9 @@
 ﻿@model Models.Photo
 @{
-    ViewBag.Title = "AddPhoto";
+    ViewBag.Title = "Dodaj zdjęcie";
 }
 <h2>
-    AddPhoto</h2>
+    Dodaj zdjęcie</h2>
 <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/upload/swfupload.js")" type="text/javascript"></script>
@@ -12,7 +12,7 @@
 
 @using (Html.BeginForm("AddPhoto", "Photo", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
-    @Html.ValidationSummary(true)
+    @Html.ValidationSummary(false)
     <fieldset>
         <legend>Dodawanie zdjęcia</legend>
         <div class="editor-label">
@@ -20,14 +20,14 @@
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.PhotoName)
-            @Html.ValidationMessageFor(model => model.PhotoName)
+            @Html.ValidationMessageFor(model => model.PhotoName, "*")
         </div>
         <div class="editor-label">
             @Html.LabelFor(model => model.Description)
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.Description)
-            @Html.ValidationMessageFor(model => model.Description)
+            @Html.ValidationMessageFor(model => model.Description, "*")
         </div>
 
         <br />
@@ -48,7 +48,7 @@
             <input id="file" type="file" name="file" onchange="fileselectedchange(this);" />
 
         <p>
-            <input type="submit" value="Dodaj zdjęcie" />
+            <a id="button" href="#" onclick="$('form').submit(); return false;">Dodaj zdjęcie</a>
         </p>
     </fieldset>
 }
