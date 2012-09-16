@@ -21,9 +21,9 @@ namespace Models
         [DisplayName("Nazwisko")]
         public string Surname { get; set; }
 
-        [Required]
-        [RegularExpression(@"[A-Za-z0-9\._\%\-\+]+@[A-Za-z0-9\.\-]+\.[A-Za-z0-9]{2,4}", ErrorMessage = "Niepoprawny adres Email")]
-        public string Email { get; set; }
+        //[Required]
+        //[RegularExpression(@"[A-Za-z0-9\._\%\-\+]+@[A-Za-z0-9\.\-]+\.[A-Za-z0-9]{2,4}", ErrorMessage = "Niepoprawny adres Email")]
+        //public string Email { get; set; }
 
         [Required]
         [DisplayName("Nazwa projektu")]
@@ -42,7 +42,7 @@ namespace Models
         public string House_number { get; set; }
 
         [Required]
-        [DisplayName("Numer apartamentu")]
+        [DisplayName("Numer mieszkania")]
         public string Apartment_number { get; set; }
 
         [Required]

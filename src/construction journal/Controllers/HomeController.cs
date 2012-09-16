@@ -35,7 +35,7 @@ namespace ConstructionJournal.Controllers
                 username=oldInfo.username,
                 Apartment_number=oldInfo.Apartment_number,
                 City=oldInfo.City,
-                Email=oldInfo.Email,
+                //Email=oldInfo.Email,
                 House_number=oldInfo.House_number,
                 Name=oldInfo.Name,
                 Project=oldInfo.Project,
@@ -50,8 +50,15 @@ namespace ConstructionJournal.Controllers
         [HttpPost]
         public ActionResult UpdateUserInfo(UserInfoViewMetadata user)
         {
-            userRepository.UpdateUserInfo(user);
-            return RedirectToAction("Index", "Blog");
+            if (ModelState.IsValid)
+            {
+                userRepository.UpdateUserInfo(user);
+                return RedirectToAction("Index", "Blog");
+            }
+
+            List<string> Cities = commonRepository.GetCities();
+            ViewBag.autocompleteCities = Cities;
+            return View();
         }
 
         public ActionResult About()

@@ -42,7 +42,7 @@
 
 </script>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("UpdateUserInfo", "Home", FormMethod.Post))
 {
     @Html.ValidationSummary(false)
 
@@ -112,7 +112,7 @@
             </div>
         </div>
         <p>
-        <a id="button" href="javascript:$('form').submit();">Zapisz zmiany</a>
+        <a id="button" href="#" onclick="$('form').submit(); return false;">Zapisz zmiany</a>
 
         </p>
 
